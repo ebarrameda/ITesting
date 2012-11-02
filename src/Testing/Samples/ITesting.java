@@ -31,9 +31,9 @@ public class ITesting extends Component {
             {
                 int C = img.getRGB(i,j);
 
-                int red = (C >> 16) & 0xFF;
-                int green = (C >> 8) & 0xFF;
-                int blue = C & 0xFF;
+                //int red = (C >> 16) & 0xFF;
+               // int green = (C >> 8) & 0xFF;
+               // int blue = C & 0xFF;
 
                 /* long red = (256^3+Color)/255^2;
               long green = (256^3+Color/255)%255;
@@ -52,30 +52,47 @@ public class ITesting extends Component {
 
                 img.setRGB(i,j,C);
 
-                Color e1 = new Color(0,255,0);
-                Color e2 = new Color(C);
+               // Color e1 = new Color(0,255,0);
+                //Color e2 = new Color(C);
 
                 //if(colorDist(e1,e2)>1000)     img.setRGB(i,j,0);
 
-                System.out.println(colorDist(e1,e2));
+               // System.out.println(colorDist(e1,e2));
 
-                System.out.println("Pixel ( "+i+","+j+ " es ( "+ red + ", "+green+ ", " +blue+" ) = " + C +"-"+C);
+                //System.out.println("Pixel ( "+i+","+j+ " es ( "+ red + ", "+green+ ", " +blue+" ) = " + C +"-"+C);
+            }
+
+        for(int i=0; i<img.getWidth();i++)
+            for(int j=0; j<img.getHeight();j++)
+            {
+               // int C = img.getRGB(i,j);
+
+
+                int color = i%256;
+
+                //int red = color;
+                //int green = color;
+                //int blue = color;
+
+                System.out.println(color+"-"+color+"-"+color);
+                Color c = new Color(color,color,color);
+                img.setRGB(i,j,c.getRGB());
             }
 
     }
 
-    double colorDist(Color e1, Color e2){
-        long rmean = ( (long)e1.getRed() + (long)e2.getRed() ) / 2;
-        long gmean = ( (long)e1.getGreen() + (long)e2.getGreen() ) / 2;
-        long bmean = ( (long)e1.getBlue() + (long)e2.getBlue() ) / 2;
+   /* double colorDist(Color e1, Color e2){
+       // long rmean = ( (long)e1.getRed() + (long)e2.getRed() ) / 2;
+        //long gmean = ( (long)e1.getGreen() + (long)e2.getGreen() ) / 2;
+       // long bmean = ( (long)e1.getBlue() + (long)e2.getBlue() ) / 2;
         long r = (long)e1.getRed() - (long)e2.getRed();
         long g = (long)e1.getGreen() - (long)e2.getGreen();
         long b = (long)e1.getBlue() - (long)e2.getBlue();
-        System.out.println(rmean);
-        System.out.println(gmean);
-        System.out.println(bmean);
+       // System.out.println(rmean);
+       // System.out.println(gmean);
+       // System.out.println(bmean);
         return Math.sqrt(((r*r)) + g*g + ((b*b)));
-    }
+    }                                                */
 
     public Dimension getPreferredSize() {
         if (img == null) {
